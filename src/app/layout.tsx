@@ -1,13 +1,19 @@
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
+
 import CssBaseline from "@mui/material/CssBaseline";
 import InitColorSchemeScript from "@mui/material/InitColorSchemeScript";
 import { ThemeProvider } from "@mui/material/styles";
 
-import * as React from "react";
+import React from "react";
 
+import Header from "~/components/header/Header";
 import theme from "~/theme";
 
-export default function RootLayout(props: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
@@ -15,7 +21,8 @@ export default function RootLayout(props: { children: React.ReactNode }) {
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            {props.children}
+            <Header />
+            {children}
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
